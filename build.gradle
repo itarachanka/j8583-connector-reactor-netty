@@ -1,0 +1,127 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+    id 'pmd'
+    id 'checkstyle'
+    id 'net.ltgt.errorprone' version '5.1.1'
+    id 'com.github.spotbugs' version '6.5.12'
+    id 'com.diffplug.spotless' version '8.10.3'
+    id 'io.freefair.lombok' version '9.7.0'
+    id 'org.springframework.boot' version '4.1.1'
+    id 'io.spring.dependency-management' version '1.1.7'
+    id 'com.github.node-gradle.node' version '7.1.0'
+}
+
+group = 'by.ivanta.connector.j8583'
+version = '0.0.1-SNAPSHOT'
+description = 'ISO8583 Connector using Reactor Netty'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    errorprone 'com.google.errorprone:error_prone_core:2.50.0'
+    spotbugs 'com.github.spotbugs:spotbugs:4.10.4'
+    spotbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:1.14.0'
+
+    implementation platform('io.projectreactor:reactor-bom:2025.0.6')
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-cache'
+    implementation 'net.sf.j8583:j8583:3.0.1'
+    implementation 'io.projectreactor.netty:reactor-netty-core'
+    implementation 'com.github.ben-manes.caffeine:caffeine:3.2.4'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.awaitility:awaitility:4.3.0'
+    testImplementation 'io.micrometer:micrometer-test:1.18.0-M1'
+    testImplementation 'io.projectreactor:reactor-test'
+    testImplementation 'com.tngtech.archunit:archunit-junit6:1.5.1'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
+
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
+}
+
+spotless {
+    format 'misc', {
+        target '*.gradle', '.gitattributes', '.gitignore', '*.properties', '*.md'
+
+        trimTrailingWhitespace()
+        leadingTabsToSpaces()
+        endWithNewline()
+    }
+    java {
+        importOrder()
+
+        removeUnusedImports()
+        forbidWildcardImports()
+        forbidModuleImports()
+        shortenFullyQualifiedTypes()
+
+        cleanthat()
+
+        googleJavaFormat().aosp()
+
+        formatAnnotations()
+        licenseHeaderFile file('tools/spotless/license.header')
+    }
+}
+
+spotbugsMain {
+    effort = 'max'
+    reports {
+        html {
+            required = true
+            outputLocation = file("$buildDir/reports/spotbugs/main/spotbugs.html")
+            stylesheet = 'fancy-hist.xsl'
+        }
+    }
+}
+
+spotbugsTest {
+    enabled = false
+}
+
+pmdTest {
+    enabled = false
+}
+
+checkstyle {
+    configDirectory = layout.projectDirectory.dir('tools/checkstyle')
+}
+
+node {
+    download = true
+    version = '25.2.1'
+
+    nodeProjectDir = file('site')
+}
+
+task buildDocusaurus(type: NpmTask) {
+    dependsOn npmInstall
+    args = ['run', 'build', '--', '--out-dir', "${buildDir}/site/content"]
+}
+
+task startDocusaurus(type: NpmTask) {
+    dependsOn npmInstall
+    args = ['start']
+}
+
+build {
+    dependsOn buildDocusaurus
+}

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<j8583-config>
+
+    <!-- Template: echo, sign on, sign off -->
+    <template type="0800">
+        <field num="7" type="DATE10" tz="UTC"/>
+        <field num="11" type="NUMERIC" length="6"/>
+        <field num="70" type="NUMERIC" length="3"/>
+    </template>
+
+    <!-- Template: authorization request -->
+    <template type="0100">
+        <field num="2" type="LLBCDBIN"/>
+        <field num="3" type="NUMERIC" length="6"/>
+        <field num="4" type="NUMERIC" length="12"/>
+        <field num="7" type="DATE10" tz="UTC"/>
+        <field num="11" type="NUMERIC" length="6"/>
+        <field num="12" type="NUMERIC" length="6"/>
+        <field num="13" type="NUMERIC" length="4"/>
+        <field num="14" type="NUMERIC" length="4"/>
+        <field num="37" type="ALPHA" length="12"/>
+        <field num="49" type="NUMERIC" length="3"/>
+    </template>
+
+    <!-- Template: purchase, refund request -->
+    <template type="0200">
+        <field num="2" type="LLBCDBIN"/>
+        <field num="3" type="NUMERIC" length="6"/>
+        <field num="4" type="NUMERIC" length="12"/>
+        <field num="7" type="DATE10" tz="UTC"/>
+        <field num="11" type="NUMERIC" length="6"/>
+        <field num="12" type="NUMERIC" length="6"/>
+        <field num="13" type="NUMERIC" length="4"/>
+        <field num="14" type="NUMERIC" length="4"/>
+        <field num="37" type="ALPHA" length="12"/>
+        <field num="49" type="NUMERIC" length="3"/>
+    </template>
+
+    <!-- Template: final advise -->
+    <template type="0220">
+        <field num="2" type="LLBCDBIN"/>
+        <field num="3" type="NUMERIC" length="6"/>
+        <field num="4" type="NUMERIC" length="12"/>
+        <field num="7" type="DATE10" tz="UTC"/>
+        <field num="11" type="NUMERIC" length="6"/>
+        <field num="12" type="NUMERIC" length="6"/>
+        <field num="13" type="NUMERIC" length="4"/>
+        <field num="14" type="NUMERIC" length="4"/>
+        <field num="22" type="NUMERIC" length="3"/>
+        <field num="24" type="NUMERIC" length="3"/>
+        <field num="37" type="ALPHA" length="12"/>
+        <field num="38" type="ALPHA" length="6"/>
+        <field num="49" type="NUMERIC" length="3"/>
+    </template>
+
+    <!-- Template: reversal purchase, reversal authorization -->
+    <template type="0420">
+        <field num="2" type="LLBCDBIN"/>
+        <field num="3" type="NUMERIC" length="6"/>
+        <field num="4" type="NUMERIC" length="12"/>
+        <field num="7" type="DATE10" tz="UTC"/>
+        <field num="11" type="NUMERIC" length="6"/>
+        <field num="12" type="NUMERIC" length="6"/>
+        <field num="13" type="NUMERIC" length="4"/>
+        <field num="14" type="NUMERIC" length="4"/>
+        <field num="22" type="NUMERIC" length="3"/>
+        <field num="24" type="NUMERIC" length="3"/>
+        <field num="37" type="ALPHA" length="12"/>
+        <field num="38" type="ALPHA" length="6"/>
+        <field num="39" type="ALPHA" length="2"/>
+        <field num="49" type="NUMERIC" length="3"/>
+    </template>
+
+    <!-- Parse: echo, sign On, sign Off -->
+    <parse type="0800">
+        <field num="7" type="DATE10" tz="UTC"/>
+        <field num="11" type="NUMERIC" length="6"/>
+        <field num="70" type="NUMERIC" length="3"/>
+    </parse>
+
+    <!-- Parse: authorization request -->
+    <parse type="0100">
+        <field num="2" type="LLBCDBIN"/>
+        <field num="3" type="NUMERIC" length="6"/>
+        <field num="4" type="NUMERIC" length="12"/>
+        <field num="7" type="DATE10" tz="UTC"/>
+        <field num="11" type="NUMERIC" length="6"/>
+        <field num="12" type="NUMERIC" length="6"/>
+        <field num="13" type="NUMERIC" length="4"/>
+        <field num="14" type="NUMERIC" length="4"/>
+        <field num="37" type="ALPHA" length="12"/>
+        <field num="49" type="NUMERIC" length="3"/>
+    </parse>
+
+    <!-- Parse: purchase, refund request -->
+    <parse type="0200">
+        <field num="2" type="LLBCDBIN"/>
+        <field num="3" type="NUMERIC" length="6"/>
+        <field num="4" type="NUMERIC" length="12"/>
+        <field num="7" type="DATE10" tz="UTC"/>
+        <field num="11" type="NUMERIC" length="6"/>
+        <field num="12" type="NUMERIC" length="6"/>
+        <field num="13" type="NUMERIC" length="4"/>
+        <field num="14" type="NUMERIC" length="4"/>
+        <field num="37" type="ALPHA" length="12"/>
+        <field num="49" type="NUMERIC" length="3"/>
+    </parse>
+
+    <!-- Parse: final advise -->
+    <parse type="0220">
+        <field num="2" type="LLBCDBIN"/>
+        <field num="3" type="NUMERIC" length="6"/>
+        <field num="4" type="NUMERIC" length="12"/>
+        <field num="7" type="DATE10" tz="UTC"/>
+        <field num="11" type="NUMERIC" length="6"/>
+        <field num="12" type="NUMERIC" length="6"/>
+        <field num="13" type="NUMERIC" length="4"/>
+        <field num="14" type="NUMERIC" length="4"/>
+        <field num="22" type="NUMERIC" length="3"/>
+        <field num="24" type="NUMERIC" length="3"/>
+        <field num="37" type="ALPHA" length="12"/>
+        <field num="38" type="ALPHA" length="6"/>
+        <field num="49" type="NUMERIC" length="3"/>
+    </parse>
+
+    <!-- Parse: reversal purchase, reversal authorization -->
+    <parse type="0420">
+        <field num="2" type="LLBCDBIN"/>
+        <field num="3" type="NUMERIC" length="6"/>
+        <field num="4" type="NUMERIC" length="12"/>
+        <field num="7" type="DATE10" tz="UTC"/>
+        <field num="11" type="NUMERIC" length="6"/>
+        <field num="12" type="NUMERIC" length="6"/>
+        <field num="13" type="NUMERIC" length="4"/>
+        <field num="14" type="NUMERIC" length="4"/>
+        <field num="22" type="NUMERIC" length="3"/>
+        <field num="24" type="NUMERIC" length="3"/>
+        <field num="37" type="ALPHA" length="12"/>
+        <field num="38" type="ALPHA" length="6"/>
+        <field num="39" type="ALPHA" length="2"/>
+        <field num="49" type="NUMERIC" length="3"/>
+    </parse>
+
+    <!-- Parse: echo, sign on, sign off response -->
+    <parse type="0810">
+        <field num="7" type="DATE10" tz="UTC"/>
+        <field num="11" type="NUMERIC" length="6"/>
+        <field num="70" type="NUMERIC" length="3"/>
+    </parse>
+
+    <!-- Parse: authorization response -->
+    <parse type="0110">
+        <field num="2" type="LLBCDBIN"/>
+        <field num="3" type="NUMERIC" length="6"/>
+        <field num="4" type="NUMERIC" length="12"/>
+        <field num="7" type="DATE10" tz="UTC"/>
+        <field num="11" type="NUMERIC" length="6"/>
+        <field num="23" type="NUMERIC" length="3"/>
+        <field num="32" type="LLVAR" length="11"/>
+        <field num="37" type="ALPHA" length="12"/>
+        <field num="38" type="ALPHA" length="6"/>
+        <field num="39" type="ALPHA" length="2"/>
+        <field num="49" type="NUMERIC" length="3"/>
+    </parse>
+
+    <!-- Parse: purchase, refund -->
+    <parse type="0210">
+        <field num="2" type="LLBCDBIN"/>
+        <field num="3" type="NUMERIC" length="6"/>
+        <field num="4" type="NUMERIC" length="12"/>
+        <field num="7" type="DATE10" tz="UTC"/>
+        <field num="11" type="NUMERIC" length="6"/>
+        <field num="23" type="NUMERIC" length="3"/>
+        <field num="32" type="LLVAR" length="11"/>
+        <field num="37" type="ALPHA" length="12"/>
+        <field num="38" type="ALPHA" length="6"/>
+        <field num="39" type="ALPHA" length="2"/>
+        <field num="49" type="NUMERIC" length="3"/>
+    </parse>
+
+    <!-- Parse: final advise response -->
+    <parse type="0230">
+        <field num="2" type="LLBCDBIN"/>
+        <field num="3" type="NUMERIC" length="6"/>
+        <field num="4" type="NUMERIC" length="12"/>
+        <field num="7" type="DATE10" tz="UTC"/>
+        <field num="11" type="NUMERIC" length="6"/>
+        <field num="23" type="NUMERIC" length="3"/>
+        <field num="24" type="NUMERIC" length="3"/>
+        <field num="32" type="LLVAR" length="11"/>
+        <field num="37" type="ALPHA" length="12"/>
+        <field num="39" type="ALPHA" length="2"/>
+        <field num="49" type="NUMERIC" length="3"/>
+    </parse>
+
+    <!-- Parse: reversal purchase -->
+    <parse type="0430">
+        <field num="2" type="LLBCDBIN"/>
+        <field num="3" type="NUMERIC" length="6"/>
+        <field num="4" type="NUMERIC" length="12"/>
+        <field num="7" type="DATE10" tz="UTC"/>
+        <field num="11" type="NUMERIC" length="6"/>
+        <field num="23" type="NUMERIC" length="3"/>
+        <field num="24" type="NUMERIC" length="3"/>
+        <field num="32" type="LLVAR" length="11"/>
+        <field num="37" type="ALPHA" length="12"/>
+        <field num="38" type="ALPHA" length="6"/>
+        <field num="39" type="ALPHA" length="2"/>
+        <field num="49" type="NUMERIC" length="3"/>
+    </parse>
+
+</j8583-config>
