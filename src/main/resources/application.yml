@@ -1,0 +1,12 @@
+---
+spring:
+  main:
+    banner-mode: off
+  application:
+    name: "j8583-connector-reactor-netty"
+  cache:
+    type: "caffeine"
+    cache-names:
+    - "j8583-connector-promise-sinks"
+    caffeine:
+      spec: "recordStats"
